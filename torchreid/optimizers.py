@@ -17,18 +17,18 @@ def init_optimizer(params,
     if optim == 'adam':
         return torch.optim.Adam(params, lr=lr, weight_decay=weight_decay,
                                 betas=(adam_beta1, adam_beta2))
-    
+
     elif optim == 'amsgrad':
         return torch.optim.Adam(params, lr=lr, weight_decay=weight_decay,
                                 betas=(adam_beta1, adam_beta2), amsgrad=True)
-    
+
     elif optim == 'sgd':
         return torch.optim.SGD(params, lr=lr, momentum=momentum, weight_decay=weight_decay,
                                dampening=sgd_dampening, nesterov=sgd_nesterov)
-    
+
     elif optim == 'rmsprop':
         return torch.optim.RMSprop(params, lr=lr, momentum=momentum, weight_decay=weight_decay,
                                    alpha=rmsprop_alpha)
-    
+
     else:
         raise ValueError("Unsupported optimizer: {}".format(optim))

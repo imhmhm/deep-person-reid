@@ -99,7 +99,7 @@ class ImageDataManager(BaseDataManager):
                 batch_size=self.train_batch_size, shuffle=False, num_workers=self.workers,
                 pin_memory=self.use_gpu, drop_last=True
             )
-        
+
         else:
             self.trainloader = DataLoader(
                 ImageDataset(self.train, transform=transform_train),
@@ -110,7 +110,7 @@ class ImageDataManager(BaseDataManager):
         print("=> Initializing TEST (target) datasets")
         self.testloader_dict = {name: {'query': None, 'gallery': None} for name in self.target_names}
         self.testdataset_dict = {name: {'query': None, 'gallery': None} for name in self.target_names}
-        
+
         for name in self.target_names:
             dataset = init_imgreid_dataset(
                 root=self.root, name=name, split_id=self.split_id, cuhk03_labeled=self.cuhk03_labeled,

@@ -3,7 +3,7 @@ import argparse
 
 def argument_parser():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    
+
     # ************************************************************
     # Datasets (general)
     # ************************************************************
@@ -33,7 +33,7 @@ def argument_parser():
                         help="how to sample images from a tracklet")
     parser.add_argument('--pool-tracklet-features', type=str, default='avg', choices=['avg', 'max'],
                         help="how to pool features over a tracklet (for video reid)")
-    
+
     # ************************************************************
     # CUHK03-specific setting
     # ************************************************************
@@ -43,7 +43,7 @@ def argument_parser():
                         help="use classic split by Li et al. CVPR'14")
     parser.add_argument('--use-metric-cuhk03', action='store_true',
                         help="use cuhk03's metric for evaluation")
-    
+
     # ************************************************************
     # Optimization options
     # ************************************************************
@@ -52,7 +52,7 @@ def argument_parser():
     parser.add_argument('--lr', default=0.0003, type=float,
                         help="initial learning rate")
     parser.add_argument('--weight-decay', default=5e-04, type=float,
-                        help="weight decay")   
+                        help="weight decay")
     # sgd
     parser.add_argument('--momentum', default=0.9, type=float,
                         help="momentum factor for sgd and rmsprop")
@@ -68,7 +68,7 @@ def argument_parser():
                         help="exponential decay rate for adam's first moment")
     parser.add_argument('--adam-beta2', default=0.999, type=float,
                         help="exponential decay rate for adam's second moment")
-    
+
     # ************************************************************
     # Training hyperparameters
     # ************************************************************
@@ -85,7 +85,7 @@ def argument_parser():
                         help="training batch size")
     parser.add_argument('--test-batch-size', default=100, type=int,
                         help="test batch size")
-    
+
     parser.add_argument('--always-fixbase', action='store_true',
                         help="always fix base network and only train specified layers")
     parser.add_argument('--fixbase-epoch', type=int, default=0,
@@ -112,7 +112,7 @@ def argument_parser():
                         help="weight to balance cross entropy loss")
     parser.add_argument('--lambda-htri', type=float, default=1,
                         help="weight to balance hard triplet loss")
-    
+
     # ************************************************************
     # Architecture
     # ************************************************************
@@ -129,7 +129,7 @@ def argument_parser():
                         help="evaluation frequency (set to -1 to test only in the end)")
     parser.add_argument('--start-eval', type=int, default=0,
                         help="start to evaluate after a specific epoch")
-    
+
     # ************************************************************
     # Miscs
     # ************************************************************
