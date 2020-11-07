@@ -14,7 +14,7 @@ class Market1501(ImageDataset):
         Zheng et al. Scalable Person Re-identification: A Benchmark. ICCV 2015.
 
     URL: `<http://www.liangzheng.org/Project/project_reid.html>`_
-    
+
     Dataset statistics:
         - identities: 1501 (+1 for background).
         - images: 12936 (train) + 3368 (query) + 15913 (gallery).

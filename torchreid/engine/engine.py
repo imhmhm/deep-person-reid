@@ -7,6 +7,7 @@ from collections import OrderedDict
 import torch
 from torch.nn import functional as F
 from torch.utils.tensorboard import SummaryWriter
+from scipy import io as s_io
 
 from torchreid import metrics
 from torchreid.utils import (
@@ -396,6 +397,8 @@ class Engine(object):
         )
         distmat = metrics.compute_distance_matrix(qf, gf, dist_metric)
         distmat = distmat.numpy()
+        s_io.savemat(dataset_name + '.mat',
+                     {'q': qf.data.numpy(), 'g': gf.data.numpy(), 'qt': q_pids, 'gt': g_pids})
 
         if rerank:
             print('Applying person re-ranking ...')

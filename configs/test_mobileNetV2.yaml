@@ -1,0 +1,33 @@
+model:
+  name: 'mobilenetv2_x1_0'
+  pretrained: True
+  # load_weights: model_zoo/mobilenetv2_1dot0_market.pth.tar
+  load_weights: model_zoo/mobilenetv2_1dot0_duke.pth.tar
+  # load_weights: model_zoo/mobilenetv2_1.0-0f96a698.pth
+
+data:
+  type: 'image'
+  root: datasets
+  # sources: ['market1501']
+  # targets: ['market1501']
+  sources: ['dukemtmcreid']
+  targets: ['dukemtmcreid']
+  height: 256
+  width: 128
+  combineall: False
+  transforms: ['random_flip', 'color_jitter']
+  save_dir: 'log/test_mobileNetV2'
+
+loss:
+  name: 'softmax'
+  softmax:
+    label_smooth: True
+
+test:
+  batch_size: 64
+  dist_metric: 'cosine'
+  normalize_feature: True
+  evaluate: True
+  eval_freq: 1
+  rerank: False
+  visrank_topk: 10
